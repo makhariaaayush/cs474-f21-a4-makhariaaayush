@@ -1,0 +1,104 @@
+{
+  "tests": [
+    {
+      "name": "Test 1",
+      "setup": "",
+      "run": "grep 'Failures: 0, Errors: 0, Skipped: 0,' target/surefire-reports/edu.uic.cs474.f21.a4.Test01_InstanceOfSingleClass.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test 2",
+      "setup": "",
+      "run": "grep 'Failures: 0, Errors: 0, Skipped: 0,' target/surefire-reports/edu.uic.cs474.f21.a4.Test02_InstanceOfTwoClasses.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test 3",
+      "setup": "",
+      "run": "grep 'Failures: 0, Errors: 0, Skipped: 0,' target/surefire-reports/edu.uic.cs474.f21.a4.Test03_SubtypingInstanceof.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test 4",
+      "setup": "",
+      "run": "grep 'Failures: 0, Errors: 0, Skipped: 0,' target/surefire-reports/edu.uic.cs474.f21.a4.Test04_ReadSingleFieldOfSingleClass.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test 5",
+      "setup": "",
+      "run": "grep 'Failures: 0, Errors: 0, Skipped: 0,' target/surefire-reports/edu.uic.cs474.f21.a4.Test05_ReadTwoFieldsOfTwoClasses.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test 6",
+      "setup": "",
+      "run": "grep 'Failures: 0, Errors: 0, Skipped: 0,' target/surefire-reports/edu.uic.cs474.f21.a4.Test06_ReadFieldInherited.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test 7",
+      "setup": "",
+      "run": "grep 'Failures: 0, Errors: 0, Skipped: 0,' target/surefire-reports/edu.uic.cs474.f21.a4.Test07_InvokeMethod.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test 8",
+      "setup": "",
+      "run": "grep 'Failures: 0, Errors: 0, Skipped: 0,' target/surefire-reports/edu.uic.cs474.f21.a4.Test08_InvokeInheritedMethod.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test 9",
+      "setup": "",
+      "run": "grep 'Failures: 0, Errors: 0, Skipped: 0,' target/surefire-reports/edu.uic.cs474.f21.a4.Test09_FieldInitThis.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test 10",
+      "setup": "",
+      "run": "grep 'Failures: 0, Errors: 0, Skipped: 0,' target/surefire-reports/edu.uic.cs474.f21.a4.Test10_WriteField.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    }
+  ]
+}
