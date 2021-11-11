@@ -1,11 +1,13 @@
 package edu.uic.cs474.f21.a4;
 
+import edu.uic.cs474.f21.a4.solution.A4Solution;
+
 import java.util.Optional;
 
 public abstract class Assignment4 {
 
     public static Assignment4 getSolution() {
-        throw new Error("Not implemented");
+        return new A4Solution();
     }
 
     public abstract Value evaluate(Expression c, Environment e);
