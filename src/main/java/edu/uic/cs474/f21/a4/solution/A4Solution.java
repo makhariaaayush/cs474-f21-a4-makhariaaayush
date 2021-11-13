@@ -2,7 +2,9 @@ package edu.uic.cs474.f21.a4.solution;
 
 import edu.uic.cs474.f21.a4.*;
 
+import java.util.Arrays;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 public class A4Solution extends Assignment4 {
     private Interpreter interpreter = new Interpreter();
@@ -19,20 +21,18 @@ public class A4Solution extends Assignment4 {
             case "InstanceOfExpression": {
                 InstanceOfExpression ioe = (InstanceOfExpression) c;
                 Value val = evaluate(ioe.target,e);
-                Value t = new Value.BoolValue(true);
-                Value f = new Value.BoolValue(false);
                 if(val instanceof ObjectValue){
                     ObjectValue ioeobj = (ObjectValue) val;
                     ClassValue ioeclassValue = (ClassValue) e.lookup(ioeobj.theName);
                     if (!((ObjectValue) val).theName.equals(ioe.className)) {
                         if (ioeclassValue.superClass.isEmpty() || !ioeclassValue.superClass.get().
                                 equals(ioe.className)) {
-                            return f;
+                            return new Value.BoolValue(false);
                         }
                     }
-                    return  t;
+                    return  new Value.BoolValue(true);
                 }
-                return  f;
+                return  new Value.BoolValue(false);
             }
 
             case "NewExpression": {
@@ -40,7 +40,6 @@ public class A4Solution extends Assignment4 {
                 ClassValue neweclassValue = (ClassValue) e.lookup(newe.className);
                 ObjectValue neweObject = new ObjectValue(newe.className, neweclassValue.methods, neweclassValue.fields);
                 return neweObject;
-
             }
 
             case "ReadFieldExpression": {
@@ -56,16 +55,18 @@ public class A4Solution extends Assignment4 {
             case "CallMethodExpression": {
                 CallMethodExpression cme = (CallMethodExpression) c;
                 ObjectValue cmeObject = (ObjectValue) evaluate(cme.receiver,e);
-                for(Method method : cmeObject.methods){
-                    if(method.name.equals(cme.methodName)){
+                Method[] methods = cmeObject.methods;
+                for (Method method : methods) {
+                    if (method.name.equals(cme.methodName)) {
                         int count = 0;
+                        e = e.bind(new Name("this"), evaluate(cme.receiver, e));
                         Expression[] arguments = cme.arguments;
-                        for (int i = 0, argumentsLength = arguments.length; i < argumentsLength; i++) {
+                        for (int i = 0; i < arguments.length; i++) {
                             Expression ex = arguments[i];
                             e = e.bind(method.arguments[count], evaluate(ex, e));
                             count = count + 1;
                         }
-                        return evaluate(method.body,e);
+                        return evaluate(method.body, e);
                     }
                 }
             }
