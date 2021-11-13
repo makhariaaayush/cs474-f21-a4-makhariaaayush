@@ -2,15 +2,14 @@ package edu.uic.cs474.f21.a4.solution;
 
 import edu.uic.cs474.f21.a4.*;
 
-import java.util.Arrays;
 import java.util.Optional;
-import java.util.stream.IntStream;
 
 public class A4Solution extends Assignment4 {
     private Interpreter interpreter = new Interpreter();
     @Override
     public Value evaluate(Expression c, Environment e) {
         switch(c.getClass().getSimpleName()) {
+//            3 4 7
             case "ClassDefExpression": {
                 ClassDefExpression def = (ClassDefExpression) c;
                 ClassValue theClassDefined = new ClassValue(def.superName, def.methods, def.fields);
@@ -18,6 +17,8 @@ public class A4Solution extends Assignment4 {
                 return evaluate(def.body,e);
 
             }
+//            To check object of A is instance of a is true and object a instance of b is not true
+//                2 and 3
             case "InstanceOfExpression": {
                 InstanceOfExpression ioe = (InstanceOfExpression) c;
                 Value val = evaluate(ioe.target,e);
@@ -34,7 +35,8 @@ public class A4Solution extends Assignment4 {
                 }
                 return  new Value.BoolValue(false);
             }
-
+//Test 3 same as 2 just that here b extends a so b instance of A is true
+//                2 and 4
             case "NewExpression": {
                 NewExpression newe = (NewExpression) c;
                 ClassValue neweclassValue = (ClassValue) e.lookup(newe.className);
@@ -43,6 +45,9 @@ public class A4Solution extends Assignment4 {
             }
 
             case "ReadFieldExpression": {
+//                4 6
+//                Test 4 we create a class for A with single field which is then read as value of A when passed as instance of an object
+//                Test 5 we need to read 2 fields and return the respective values
                 ReadFieldExpression rfe = (ReadFieldExpression) c;
                 ObjectValue rfeObject = (ObjectValue) evaluate(rfe.receiver, e);
                 for (Field field : rfeObject.fields)
@@ -51,8 +56,10 @@ public class A4Solution extends Assignment4 {
                         return new Value.IntValue(value.val);
                     }
             }
+//            test 6 we need to climb the hierarchy and get the inherited value
 
             case "CallMethodExpression": {
+//                7 we take the argument convert to receiver and then bind it into and expression and reurn the value
                 CallMethodExpression cme = (CallMethodExpression) c;
                 ObjectValue cmeObject = (ObjectValue) evaluate(cme.receiver,e);
                 Method[] methods = cmeObject.methods;
