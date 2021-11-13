@@ -82,8 +82,6 @@ public class A4Solution extends Assignment4 {
             this.superClass = superClass;
             this.methods = methods;
             this.fields = fields;
-
-
         }
     }
 
